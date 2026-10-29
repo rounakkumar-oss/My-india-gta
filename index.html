@@ -6,7 +6,11 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Indian GTA 6" />
   <meta name="theme-color" content="#090A0F" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <title>Bharat Vice: Indian Open-World 3D</title>
   <meta name="description" content="3D Indian Open-World Action Game (GTA 6 meets Indian City) with Lucia-style GLB character, Ferrari & Auto-Rickshaw driving, Hindu Mandir & city landmarks, infinite NPC spawner, and Android APK GitHub Actions workflow." />
   <meta property="og:title" content="Bharat Vice: Indian Open-World 3D" />
@@ -754,10 +758,12 @@
         <p style="font-size:14px; line-height:1.55; color:#cbd5e1; margin-top:8px; max-width:46ch;">
           Explore the Bhavya Hindu Mandir, Bharat State Bank, City Hospital, Vidya School, Public Park, and vibrant Bazaar streets. Drive the Draco 3D Ferrari, Auto-Rickshaw, or Police SUV.
         </p>
-        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-          <button id="btn-start-game" class="cta-start-btn">LAUNCH OPEN WORLD</button>
-          <button id="btn-spawn-ferrari-title" class="hud-chip-btn" style="margin-top:20px; padding:12px 16px;">🏎️ Start in Ferrari</button>
-          <button id="btn-hero-apk-guide" class="hud-chip-btn" style="margin-top:20px; padding:12px 16px; border-color:#22c55e; background:rgba(34,197,94,0.2);">📲 Download APK &amp; GitHub Guide</button>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:14px;">
+          <button id="btn-start-game" class="cta-start-btn" style="margin-top:0;">▶ PLAY GAME NOW</button>
+          <button id="btn-direct-install-hero" class="cta-start-btn" style="margin-top:0; background:linear-gradient(135deg, #16a34a 0%, #059669 100%); box-shadow:0 8px 25px rgba(22,163,74,0.5);">📲 DIRECT INSTALL APP (Bina GitHub)</button>
+          <a id="link-direct-download-hero" href="/Indian-GTA-6-Offline.html" download="Indian-GTA-6-Offline.html" target="_blank" rel="noopener" class="hud-chip-btn" style="padding:13px 16px; border-color:#38bdf8; background:rgba(14,165,233,0.25); color:#fff; text-decoration:none; font-weight:800; font-size:13px;">📥 DIRECT DOWNLOAD GAME (1-Click)</a>
+          <button id="btn-spawn-ferrari-title" class="hud-chip-btn" style="padding:12px 14px;">🏎️ Start in Ferrari</button>
+          <button id="btn-hero-apk-guide" class="hud-chip-btn" style="padding:12px 14px; border-color:#f59e0b; background:rgba(245,158,11,0.2);">⚙️ Options &amp; APK</button>
         </div>
       </div>
 
@@ -781,11 +787,13 @@
         <!-- Top-Center: Quick Teleport, Custom GLB & APK Drawer -->
         <div class="top-center-cluster">
           <div class="top-bar-actions interactive">
+            <button class="hud-chip-btn" id="btn-direct-install-hud" style="border-color:#22c55e; background:rgba(22,163,74,0.35); color:#4ade80;">📲 Direct Install</button>
+            <a href="/Indian-GTA-6-Offline.html" download="Indian-GTA-6-Offline.html" target="_blank" rel="noopener" class="hud-chip-btn" style="border-color:#38bdf8; background:rgba(14,165,233,0.3); color:#7dd3fc; text-decoration:none;">📥 Download Game</a>
             <button class="hud-chip-btn" id="btn-open-drawer">⚙️ Lucia .GLB &amp; APK</button>
-            <button class="hud-chip-btn" id="btn-summon-ferrari">🏎️ Summon Ferrari</button>
-            <button class="hud-chip-btn" id="btn-summon-auto">🛺 Summon Auto</button>
+            <button class="hud-chip-btn" id="btn-summon-ferrari">🏎️ Ferrari</button>
+            <button class="hud-chip-btn" id="btn-summon-auto">🛺 Auto</button>
             <button class="hud-chip-btn" id="btn-teleport-mandir">🛕 Mandir</button>
-            <button class="hud-chip-btn" id="btn-mute-audio">🔊 Audio</button>
+            <button class="hud-chip-btn" id="btn-mute-audio">🔊</button>
           </div>
           <div id="toast-banner">VEHICLE ENTERED: FERRARI F8 TRIBUTO</div>
         </div>
@@ -899,26 +907,43 @@
           </div>
         </div>
 
-        <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 14px;">
-          <div style="font-size:13px; font-weight:700; color:#4ade80; margin-bottom:6px;">
-            📲 GITHUB SE ANDROID .APK KAISE DOWNLOAD KAREIN? (FIXED JAVA 21 + DIRECT APK)
+        <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 12px;">
+          <div style="font-size:14px; font-weight:800; color:#4ade80; margin-bottom:8px;">
+            📲 BINA GITHUB KE SEEDHA PHONE ME INSTALL / DOWNLOAD KAREIN (1-CLICK DIRECT)
           </div>
-          <div style="background:rgba(15,23,42,0.9); border:1px solid rgba(74,222,128,0.3); border-radius:8px; padding:10px 12px; font-size:12px; color:#e2e8f0; line-height:1.55; margin-bottom:12px;">
-            <strong>1. Files Download / Upload Karein:</strong> Niche diye button se <code>index.html</code> aur <code>build-apk.yml</code> download karein. Apne GitHub repo me <code>index.html</code> root me daalein aur workflow ko <code>.github/workflows/build-apk.yml</code> naam se save karein.<br/>
-            <strong>2. Direct Repo Se APK Download (Sabse Aasan):</strong> Jab GitHub Actions green tick (✅) ho jaye (lagbhag 3 minute), aapke GitHub repo ke main code page par hi <strong><code>Indian-GTA-6.apk</code></strong> file ban jayegi! Us par click karein &rarr; <strong>"Download raw file"</strong> dabayein.<br/>
-            <strong>3. Releases Page Se Download:</strong> Repo ke main page par <strong>Releases</strong> section me jayein &rarr; <strong><code>Indian-GTA-6.apk</code></strong> par tap karke seedha phone me install karein!
+          <div style="background:rgba(22,163,74,0.14); border:1px solid rgba(74,222,128,0.45); border-radius:8px; padding:10px 12px; font-size:12px; color:#f8fafc; line-height:1.5; margin-bottom:10px;">
+            Ab aapko GitHub par jaane ki bilkul zaroorat nahi hai! Niche diye <strong>Green Button</strong> se game ko seedha apne Android phone me <strong>Fullscreen App</strong> ki tarah install karein, ya <strong>Direct Game File (.html)</strong> download karke Chrome me kabhi bhi offline khelein:
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+              <button class="primary-btn" id="btn-direct-install-modal" style="background:#16a34a; font-size:13px; padding:10px 16px;">📲 1. Direct Install App on Phone</button>
+              <a href="/Indian-GTA-6-Offline.html" download="Indian-GTA-6-Offline.html" target="_blank" rel="noopener" class="primary-btn" id="btn-direct-file-download" style="background:#0284c7; font-size:13px; padding:10px 16px; text-decoration:none; display:inline-flex; align-items:center;">📥 2. Direct Download Game File (Indian-GTA-6.html)</a>
+              <a href="https://ais-pre-daqzisvd6taiean4l5mlrv-369440577631.asia-southeast1.run.app" target="_blank" rel="noopener" class="hud-chip-btn" style="border-color:#f59e0b; color:#fde047; text-decoration:none; padding:10px 14px;">🌐 3. Open Fullscreen Chrome Link (For Chrome 'Add to Home Screen')</a>
+            </div>
           </div>
-          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
+
+          <div style="font-size:12px; font-weight:700; color:#93c5fd; margin-bottom:6px; margin-top:10px;">
+            🚀 OPTIONAL: APNE GITHUB REPO (<code>rounakkumar-oss/My-india-gta</code>) ME 1-CLICK AUTO-UPLOAD KAREIN
+          </div>
+          <div style="background:rgba(15,23,42,0.9); border:1px solid rgba(147,197,253,0.3); border-radius:8px; padding:8px 10px; font-size:11px; color:#cbd5e1; margin-bottom:8px;">
+            Aapke screenshot me <code>rounakkumar-oss/My-india-gta</code> khali tha isliye wahan download button nahi dikha. Agar aapko GitHub se hi <code>.apk</code> banwani hai, to apna GitHub Token daal kar <strong>Auto-Push to GitHub</strong> dabayein ya niche se files download karein:
+            <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:6px;">
+              <input type="text" id="gh-repo-input" class="glb-input" value="rounakkumar-oss/My-india-gta" style="max-width:210px; padding:6px 8px; font-size:11px;" placeholder="username/repo" />
+              <input type="password" id="gh-token-input" class="glb-input" style="padding:6px 8px; font-size:11px;" placeholder="Paste GitHub Token (ghp_...) for 1-Click Auto Push" />
+              <button class="primary-btn" id="btn-auto-push-github" style="background:#7c3aed; padding:6px 12px; font-size:11px;">🚀 Auto-Push to My GitHub</button>
+            </div>
+            <div id="gh-push-status" style="margin-top:4px; font-family:var(--font-mono); font-size:11px; color:#fde047;"></div>
+          </div>
+
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
             <button class="primary-btn" id="btn-download-html">⬇ Download index.html</button>
-            <button class="primary-btn" id="btn-copy-html" style="background:#2563eb;">📋 Copy index.html Full Code</button>
+            <button class="primary-btn" id="btn-copy-html" style="background:#2563eb;">📋 Copy index.html Code</button>
             <button class="primary-btn" id="btn-download-workflow" style="background:#16a34a;">⬇ Download build-apk.yml</button>
             <button class="hud-chip-btn" id="btn-copy-workflow">📋 Copy build-apk.yml Code</button>
           </div>
           <textarea
             id="code-export-box"
             readonly
-            placeholder="Upar 'Copy index.html Full Code' ya 'Copy build-apk.yml Code' par click karein — code yahan bhi aa jayega aur automatic Copy ho jayega!"
-            style="width:100%; height:95px; background:#05070b; color:#4ade80; border:1px solid rgba(255,255,255,0.22); border-radius:6px; padding:8px; font-family:var(--font-mono); font-size:11px; user-select:all; -webkit-user-select:all;"
+            placeholder="Upar 'Copy index.html Code' ya 'Copy build-apk.yml Code' par click karein — code yahan bhi aa jayega aur automatic Copy ho jayega!"
+            style="width:100%; height:70px; background:#05070b; color:#4ade80; border:1px solid rgba(255,255,255,0.22); border-radius:6px; padding:8px; font-family:var(--font-mono); font-size:11px; user-select:all; -webkit-user-select:all;"
           ></textarea>
         </div>
       </div>
@@ -3554,6 +3579,118 @@
       document.getElementById('btn-copy-workflow').addEventListener('click', function () {
         copyTextWithBoxFallback(EMBEDDED_WORKFLOW_YML, 'BUILD-APK.YML WORKFLOW');
       });
+
+      // ============================================================================
+      // 17B. DIRECT ANDROID APP INSTALLER (WEBAPK / PWA) & 1-CLICK GITHUB PUSHER
+      // ============================================================================
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').catch(function () {});
+        });
+      }
+
+      var deferredInstallPrompt = null;
+      window.addEventListener('beforeinstallprompt', function (e) {
+        e.preventDefault();
+        deferredInstallPrompt = e;
+        showToast('📲 DIRECT ANDROID APP INSTALL READY!');
+      });
+
+      function triggerDirectDownloadOrInstall() {
+        // 1. Trigger native Android Chrome WebAPK / PWA install prompt if available
+        if (deferredInstallPrompt) {
+          deferredInstallPrompt.prompt();
+          deferredInstallPrompt.userChoice.then(function (choice) {
+            if (choice.outcome === 'accepted') {
+              showToast('INSTALLED INDIAN GTA 6 ON PHONE!');
+            }
+            deferredInstallPrompt = null;
+          });
+          return;
+        }
+
+        // 2. Always trigger direct download of the standalone offline HTML game file
+        try {
+          var dlLink = document.createElement('a');
+          dlLink.href = '/Indian-GTA-6-Offline.html';
+          dlLink.download = 'Indian-GTA-6-Offline.html';
+          dlLink.target = '_blank';
+          document.body.appendChild(dlLink);
+          dlLink.click();
+          document.body.removeChild(dlLink);
+        } catch (err) {}
+
+        // 3. If running inside AI Studio preview iframe on mobile, also open top-level app URL so Chrome's "Install App / Add to Home Screen" works directly
+        var inIframe = false;
+        try { inIframe = window.self !== window.top; } catch (e) { inIframe = true; }
+        if (inIframe) {
+          window.open('https://ais-pre-daqzisvd6taiean4l5mlrv-369440577631.asia-southeast1.run.app', '_blank', 'noopener');
+          showToast('DOWNLOADING GAME + OPENING DIRECT INSTALL TAB!');
+        } else {
+          showToast('DOWNLOAD STARTED! YA CHROME MENU (⋮) -> "INSTALL APP" DABAYEIN');
+          document.getElementById('settings-modal').classList.add('open');
+        }
+      }
+
+      var btnInstallHero = document.getElementById('btn-direct-install-hero');
+      if (btnInstallHero) btnInstallHero.addEventListener('click', triggerDirectDownloadOrInstall);
+      var btnInstallHud = document.getElementById('btn-direct-install-hud');
+      if (btnInstallHud) btnInstallHud.addEventListener('click', triggerDirectDownloadOrInstall);
+      var btnInstallModal = document.getElementById('btn-direct-install-modal');
+      if (btnInstallModal) btnInstallModal.addEventListener('click', triggerDirectDownloadOrInstall);
+
+      // Optional 1-Click Auto-Push to user's GitHub repository (rounakkumar-oss/My-india-gta)
+      var btnAutoPushGh = document.getElementById('btn-auto-push-github');
+      if (btnAutoPushGh) {
+        btnAutoPushGh.addEventListener('click', async function () {
+          var repo = (document.getElementById('gh-repo-input').value || '').trim();
+          var token = (document.getElementById('gh-token-input').value || '').trim();
+          var statusEl = document.getElementById('gh-push-status');
+          if (!repo || !token) {
+            statusEl.textContent = '⚠️ Please paste your GitHub Personal Access Token (ghp_...) first, or use the Green Direct Download buttons above!';
+            return;
+          }
+          statusEl.textContent = '⏳ Uploading index.html and .github/workflows/build-apk.yml to ' + repo + '...';
+          try {
+            function utf8ToBase64(str) {
+              return window.btoa(unescape(encodeURIComponent(str)));
+            }
+            async function putGithubFile(path, content, msg) {
+              var apiUrl = 'https://api.github.com/repos/' + repo + '/contents/' + path;
+              var sha = null;
+              var getRes = await fetch(apiUrl, {
+                headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json' }
+              });
+              if (getRes.ok) {
+                var existing = await getRes.json();
+                sha = existing.sha;
+              }
+              var bodyObj = { message: msg, content: utf8ToBase64(content) };
+              if (sha) bodyObj.sha = sha;
+              var putRes = await fetch(apiUrl, {
+                method: 'PUT',
+                headers: {
+                  'Authorization': 'Bearer ' + token,
+                  'Accept': 'application/vnd.github+json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bodyObj)
+              });
+              if (!putRes.ok) {
+                var errTxt = await putRes.text();
+                throw new Error(errTxt);
+              }
+            }
+            var fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+            await putGithubFile('index.html', fullHtml, 'Add Indian GTA 6 3D Open-World Game index.html');
+            await putGithubFile('.github/workflows/build-apk.yml', EMBEDDED_WORKFLOW_YML, 'Add automated Android APK GitHub Actions workflow');
+            statusEl.innerHTML = '✅ SUCCESS! Files uploaded to <b>' + repo + '</b>! Open <a href="https://github.com/' + repo + '/actions" target="_blank" style="color:#4ade80;text-decoration:underline;">github.com/' + repo + '/actions</a> — APK will be ready in 3 mins!';
+            showToast('UPLOADED TO GITHUB SUCCESSFULLY!');
+          } catch (err) {
+            statusEl.textContent = '❌ Error: ' + (err && err.message ? err.message.slice(0, 120) : 'Check token permissions (repo + workflow)');
+          }
+        });
+      }
 
       // ============================================================================
       // 18. DYNAMIC INFINITE RADIUS SPAWNER & MAIN 60FPS SIMULATION LOOP
