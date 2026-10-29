@@ -2,7 +2,6 @@ name: Build Indian GTA 6 Android APK
 
 on:
   push:
-    branches: [ "main", "master" ]
     paths-ignore:
       - "Indian-GTA-6.apk"
   workflow_dispatch:
@@ -26,7 +25,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Set up Java 21 (Temurin) for Android Gradle & Capacitor 6
+      - name: Set up Java 21 (Temurin)
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
@@ -179,7 +178,7 @@ jobs:
           cp app/build/outputs/apk/debug/app-debug.apk "$GITHUB_WORKSPACE/Indian-GTA-6.apk"
           ls -lh "$GITHUB_WORKSPACE/Indian-GTA-6.apk"
 
-      - name: Save Indian-GTA-6.apk Directly into GitHub Repo Root (For Easy 1-Click Mobile Download)
+      - name: Save Indian-GTA-6.apk Directly into GitHub Repo Root
         continue-on-error: true
         run: |
           git config user.name "github-actions[bot]"
@@ -202,8 +201,8 @@ jobs:
           tag_name: v1.0.${{ github.run_number }}
           name: "Indian GTA 6 Android APK (v1.0.${{ github.run_number }})"
           body: |
-            ### 🇮🇳 Bharat Vice: Indian GTA 6 Open-World Android APK
-            **Direct Mobile Download:** Niche **Assets** me **`Indian-GTA-6.apk`** par click karke seedha apne phone me download aur install karein!
-            - **Orientation:** Locked 16:9 Sensor Landscape Fullscreen (`Immersive Sticky`)
-            - **Engine:** Three.js r128 WebGL + Draco Ferrari + Rigged GLB Lucia & Infinite NPC Spawner
+            ### Bharat Vice: Indian GTA 6 Open-World Android APK
+            Niche **Assets** me **`Indian-GTA-6.apk`** par click karke seedha apne phone me download aur install karein!
           files: Indian-GTA-6.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

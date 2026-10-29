@@ -908,11 +908,18 @@
             <strong>2. Direct Repo Se APK Download (Sabse Aasan):</strong> Jab GitHub Actions green tick (✅) ho jaye (lagbhag 3 minute), aapke GitHub repo ke main code page par hi <strong><code>Indian-GTA-6.apk</code></strong> file ban jayegi! Us par click karein &rarr; <strong>"Download raw file"</strong> dabayein.<br/>
             <strong>3. Releases Page Se Download:</strong> Repo ke main page par <strong>Releases</strong> section me jayein &rarr; <strong><code>Indian-GTA-6.apk</code></strong> par tap karke seedha phone me install karein!
           </div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <button class="primary-btn" id="btn-download-html">⬇ 1. Download index.html</button>
-            <button class="primary-btn" id="btn-download-workflow" style="background:#16a34a;">⬇ 2. Download build-apk.yml</button>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
+            <button class="primary-btn" id="btn-download-html">⬇ Download index.html</button>
+            <button class="primary-btn" id="btn-copy-html" style="background:#2563eb;">📋 Copy index.html Full Code</button>
+            <button class="primary-btn" id="btn-download-workflow" style="background:#16a34a;">⬇ Download build-apk.yml</button>
             <button class="hud-chip-btn" id="btn-copy-workflow">📋 Copy build-apk.yml Code</button>
           </div>
+          <textarea
+            id="code-export-box"
+            readonly
+            placeholder="Upar 'Copy index.html Full Code' ya 'Copy build-apk.yml Code' par click karein — code yahan bhi aa jayega aur automatic Copy ho jayega!"
+            style="width:100%; height:95px; background:#05070b; color:#4ade80; border:1px solid rgba(255,255,255,0.22); border-radius:6px; padding:8px; font-family:var(--font-mono); font-size:11px; user-select:all; -webkit-user-select:all;"
+          ></textarea>
         </div>
       </div>
     </div>
@@ -3504,33 +3511,48 @@
         '          files: Indian-GTA-6.apk'
       ].join('\n');
 
+      function copyTextWithBoxFallback(text, label) {
+        var box = document.getElementById('code-export-box');
+        if (box) {
+          box.value = text;
+          box.focus();
+          box.select();
+          try { document.execCommand('copy'); } catch (e) {}
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).catch(function () {});
+        }
+        showToast('COPIED ' + label + ' TO CLIPBOARD!');
+      }
+
       document.getElementById('btn-download-html').addEventListener('click', function () {
-        var htmlBlob = new Blob(['<!DOCTYPE html>\n' + document.documentElement.outerHTML], { type: 'text/html' });
+        var fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+        copyTextWithBoxFallback(fullHtml, 'INDEX.HTML');
+        var htmlBlob = new Blob([fullHtml], { type: 'text/html' });
         var a = document.createElement('a');
         a.href = URL.createObjectURL(htmlBlob);
         a.download = 'index.html';
         a.click();
         URL.revokeObjectURL(a.href);
-        showToast('DOWNLOADED STANDALONE INDEX.HTML');
+      });
+
+      document.getElementById('btn-copy-html').addEventListener('click', function () {
+        var fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+        copyTextWithBoxFallback(fullHtml, 'FULL INDEX.HTML CODE');
       });
 
       document.getElementById('btn-download-workflow').addEventListener('click', function () {
+        copyTextWithBoxFallback(EMBEDDED_WORKFLOW_YML, 'BUILD-APK.YML');
         var ymlBlob = new Blob([EMBEDDED_WORKFLOW_YML], { type: 'text/yaml' });
         var a = document.createElement('a');
         a.href = URL.createObjectURL(ymlBlob);
         a.download = 'build-apk.yml';
         a.click();
         URL.revokeObjectURL(a.href);
-        showToast('DOWNLOADED build-apk.yml WORKFLOW FILE');
       });
 
       document.getElementById('btn-copy-workflow').addEventListener('click', function () {
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(EMBEDDED_WORKFLOW_YML);
-          showToast('COPIED build-apk.yml CODE TO CLIPBOARD!');
-        } else {
-          showToast('CLICK DOWNLOAD build-apk.yml BUTTON INSTEAD');
-        }
+        copyTextWithBoxFallback(EMBEDDED_WORKFLOW_YML, 'BUILD-APK.YML WORKFLOW');
       });
 
       // ============================================================================
